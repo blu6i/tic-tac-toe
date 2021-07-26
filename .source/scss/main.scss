@@ -1,77 +1,74 @@
 .wrapper {
 	height: 100vh;
-	display: grid;
-	grid-template: 100px 1fr / 1fr 400px;
-	header {
-		padding: 0 15px 0;
-		grid-column: 1/3;
-		background-color: aquamarine;
-		display: grid;
-		grid-template: 1fr / 1fr 100px 1fr;
-		align-items: center;
-		text-transform: uppercase;
-		nav.left {
+	background: lightblue;
+	#hidden__window {
+		#modal__window {
+			position: absolute;
+			height: 100vh;
+			width: 100%;
+			background-color: rgba(0, 0, 0, 0.2);
 			display: grid;
-			grid-template: 50px / 1fr 1fr 1fr;
-			justify-items: center;
+			grid-template: 1fr / 1fr;
 			align-items: center;
-		}
-		.logo {
-			height: 100px;
-			background-color: red;
-		}
-		nav.right {
-			display: grid;
-			grid-template: 50px / 1fr 1fr;
 			justify-items: center;
-			align-items: center;
-		}
-	}
-	main {
-		background: lightblue;
-		.field {
-			height: 100%;
-			display: grid;
-			grid-template: repeat(3, 170px) / repeat(3, 170px);
-			justify-content: center;
-			align-content: center;
-			grid-gap: 5px;
-			.field-item {
-				background: #000;
-			}
-		}
-	}
-	aside {
-		background-color: bisque;
-		display: grid;
-		grid-template: 15px 1fr 15px / 15px 1fr 15px;
-		.info__bar {
-			grid-column: 2 / 3;
-			grid-row: 2 / 3;
-			border: 5px solid gray;
-			border-radius: 20px;
-			overflow: hidden;
-			display: grid;
-			grid-template: 170px / 1fr;
-			grid-gap: 10px;
-			.info__bar-player {
+			.window {
+				background-color: lightgrey;
+				padding: 20px 15px 5px;
 				display: grid;
-				grid-template: 1fr / repeat(2, 1fr);
-				justify-items: center;
-				align-items: center;
-				font-size: 32px;
-				text-transform: uppercase;
-			}
-			.info__bar-score {
-				display: grid;
-				grid-template: 1fr / repeat(2, 1fr);
-				justify-items: center;
-				align-items: center;
-				.transform-v {
-					font-size: 128px;
-					transform: scale(1, 2);
+				grid-template: 1fr 100px / 1fr;
+				.window-text {
+					text-align: center;
+				}
+				.window-button {
+					align-self: center;
+					justify-self: center;
+					button {
+						cursor: pointer;
+						display: block;
+						background: url("../img/png-transparent-redo-s-purple-magenta-symbol.png") no-repeat;
+						background-size: contain;
+						height: 50px;
+						width: 50px;
+					}
 				}
 			}
+		}
+	}
+	.field {
+		height: 100%;
+		display: grid;
+		grid-template: repeat(3, 170px) / repeat(3, 170px);
+		justify-content: center;
+		align-content: center;
+		.field-item {
+			border: 2.5px solid black;
+		}
+		.field-item-top {
+			border-top: none;
+		}
+		.field-item-right {
+			border-right: none;
+		}
+		.field-item-bottom {
+			border-bottom: none;
+		}
+		.field-item-left {
+			border-left: none;
+		}
+		.cross {
+			background-image: url("../img/10-103856_red-cross-mark-png-transparent-images-x-marks.png");
+			background-repeat: no-repeat;
+			background-size: 90%;
+			background-position: center;
+		}
+		.minus {
+			background-image: url("../img/0_krug-png_-2-tys-izobrazhenij-najdeno-v-YAndeks.Kartinkah.png");
+			background-repeat: no-repeat;
+			background-size: 90%;
+			background-position: center;
+		}
+		.pull {
+			pointer-events: none;
 		}
 	}
 }
