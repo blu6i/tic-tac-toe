@@ -6,6 +6,11 @@ var win = false; // Переменная для определения побе�
 var draw = false; // Переменная для определения ничьей
 document.getElementById('hidden__window').hidden = true; // Скрываем модальное окно
 
+var scoreFirstPlayer = document.getElementById('scoreFirstPlayer');
+var scoreSecondPlayer = document.getElementById('scoreSecondPlayer');
+var coutingScoreFirstPlayer = 0;
+var coutingScoreSecondPlayer = 0;
+
 // Перебор списка с квадратами (item - квадрат, по которому нажали)
 squery.forEach(function (item) {
 	// Проверка на нажатии по квадрату
@@ -24,6 +29,8 @@ squery.forEach(function (item) {
 			// Если победил первый игрок
 			if (win) {
 				modalWindow('First');
+				coutingScoreFirstPlayer++;
+				scoreFirstPlayer.innerHTML = coutingScoreFirstPlayer;
 			}
 			//Если ничья
 			else if (draw) {
@@ -46,6 +53,8 @@ squery.forEach(function (item) {
 			// Если победил первый игрок
 			if (win) {
 				modalWindow('Second');
+				coutingScoreSecondPlayer++;
+				scoreSecondPlayer.innerHTML = coutingScoreSecondPlayer;
 			}
 			// Если ничья
 			else if (draw) {

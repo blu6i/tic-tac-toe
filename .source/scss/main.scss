@@ -1,3 +1,7 @@
+* {
+	user-select: none;
+}
+
 .wrapper {
 	height: 100vh;
 	background: lightblue;
@@ -34,41 +38,82 @@
 			}
 		}
 	}
-	.field {
-		height: 100%;
+	main {
+		height: 100vh;
 		display: grid;
-		grid-template: repeat(3, 170px) / repeat(3, 170px);
-		justify-content: center;
-		align-content: center;
-		.field-item {
-			border: 2.5px solid black;
+		grid-template: 100px 1fr 100px / 1fr 500px;
+		align-items: center;
+		.field {
+			grid-row: 1 / 4;
+			height: 100%;
+			display: grid;
+			grid-template: repeat(3, 170px) / repeat(3, 170px);
+			justify-content: center;
+			align-content: center;
+			.field-item {
+				border: 2.5px solid black;
+			}
+			.field-item-top {
+				border-top: none;
+			}
+			.field-item-right {
+				border-right: none;
+			}
+			.field-item-bottom {
+				border-bottom: none;
+			}
+			.field-item-left {
+				border-left: none;
+			}
+			.cross {
+				background-image: url("../img/10-103856_red-cross-mark-png-transparent-images-x-marks.png");
+				background-repeat: no-repeat;
+				background-size: 90%;
+				background-position: center;
+			}
+			.minus {
+				background-image: url("../img/0_krug-png_-2-tys-izobrazhenij-najdeno-v-YAndeks.Kartinkah.png");
+				background-repeat: no-repeat;
+				background-size: 90%;
+				background-position: center;
+			}
+			.pull {
+				pointer-events: none;
+			}
 		}
-		.field-item-top {
-			border-top: none;
-		}
-		.field-item-right {
-			border-right: none;
-		}
-		.field-item-bottom {
-			border-bottom: none;
-		}
-		.field-item-left {
-			border-left: none;
-		}
-		.cross {
-			background-image: url("../img/10-103856_red-cross-mark-png-transparent-images-x-marks.png");
-			background-repeat: no-repeat;
-			background-size: 90%;
-			background-position: center;
-		}
-		.minus {
-			background-image: url("../img/0_krug-png_-2-tys-izobrazhenij-najdeno-v-YAndeks.Kartinkah.png");
-			background-repeat: no-repeat;
-			background-size: 90%;
-			background-position: center;
-		}
-		.pull {
-			pointer-events: none;
+		aside {
+			grid-row: 2/3;
+			background: lightgreen;
+			border-top: 5px solid darkcyan;
+			border-left: 5px solid darkcyan;
+			border-bottom: 5px solid darkcyan;
+			border-top-left-radius: 20px;
+			border-bottom-left-radius: 20px;
+			overflow: hidden;
+			.infobar {
+				display: grid;
+				grid-template: 1fr / repeat(2, 50%);
+				.grid-item {
+					display: grid;
+					grid-template: 100px 75px 200px / 1fr;
+					justify-items: center;
+					h2 {
+						align-self: end;
+					}
+					img {
+						height: 50px;
+						width: 50px;
+						align-self: center;
+					}
+					.score {
+						align-self: center;
+						font-size: 128px;
+					}
+				}
+				.infobar__first-player {
+					border-right: 5px solid darkcyan;
+				}
+			}
 		}
 	}
 }

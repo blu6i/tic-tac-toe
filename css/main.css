@@ -1,3 +1,10 @@
+* {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
 .wrapper {
   height: 100vh;
   background: lightblue;
@@ -50,7 +57,22 @@
   width: 50px;
 }
 
-.wrapper .field {
+.wrapper main {
+  height: 100vh;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 100px 1fr 100px;
+  -ms-grid-columns: 1fr 500px;
+      grid-template: 100px 1fr 100px / 1fr 500px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.wrapper main .field {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 3;
+  grid-row: 1 / 4;
   height: 100%;
   display: -ms-grid;
   display: grid;
@@ -64,40 +86,95 @@
       align-content: center;
 }
 
-.wrapper .field .field-item {
+.wrapper main .field .field-item {
   border: 2.5px solid black;
 }
 
-.wrapper .field .field-item-top {
+.wrapper main .field .field-item-top {
   border-top: none;
 }
 
-.wrapper .field .field-item-right {
+.wrapper main .field .field-item-right {
   border-right: none;
 }
 
-.wrapper .field .field-item-bottom {
+.wrapper main .field .field-item-bottom {
   border-bottom: none;
 }
 
-.wrapper .field .field-item-left {
+.wrapper main .field .field-item-left {
   border-left: none;
 }
 
-.wrapper .field .cross {
+.wrapper main .field .cross {
   background-image: url("../img/10-103856_red-cross-mark-png-transparent-images-x-marks.png");
   background-repeat: no-repeat;
   background-size: 90%;
   background-position: center;
 }
 
-.wrapper .field .minus {
+.wrapper main .field .minus {
   background-image: url("../img/0_krug-png_-2-tys-izobrazhenij-najdeno-v-YAndeks.Kartinkah.png");
   background-repeat: no-repeat;
   background-size: 90%;
   background-position: center;
 }
 
-.wrapper .field .pull {
+.wrapper main .field .pull {
   pointer-events: none;
+}
+
+.wrapper main aside {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+  background: lightgreen;
+  border-top: 5px solid darkcyan;
+  border-left: 5px solid darkcyan;
+  border-bottom: 5px solid darkcyan;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  overflow: hidden;
+}
+
+.wrapper main aside .infobar {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr;
+  -ms-grid-columns: (50%)[2];
+      grid-template: 1fr/repeat(2, 50%);
+}
+
+.wrapper main aside .infobar .grid-item {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 100px 75px 200px;
+  -ms-grid-columns: 1fr;
+      grid-template: 100px 75px 200px / 1fr;
+  justify-items: center;
+}
+
+.wrapper main aside .infobar .grid-item h2 {
+  -ms-flex-item-align: end;
+      -ms-grid-row-align: end;
+      align-self: end;
+}
+
+.wrapper main aside .infobar .grid-item img {
+  height: 50px;
+  width: 50px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.wrapper main aside .infobar .grid-item .score {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  font-size: 128px;
+}
+
+.wrapper main aside .infobar .infobar__first-player {
+  border-right: 5px solid darkcyan;
 }
