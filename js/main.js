@@ -4,12 +4,26 @@ var firstPlayer = true; // Первый игрок
 var secondPlayer = false; // Второй игрок
 var win = false; // Переменная для определения победителя
 var draw = false; // Переменная для определения ничьей
-document.getElementById('hidden__window').hidden = true; // Скрываем модальное окно
-
-var scoreFirstPlayer = document.getElementById('scoreFirstPlayer');
-var scoreSecondPlayer = document.getElementById('scoreSecondPlayer');
+const windowList = document.querySelectorAll('.hidden__window');
+const windowEndGame = windowList[0];
+const windowStartGame = windowList[1];
+windowEndGame.hidden = true; // Скрываем модальное окно
+windowStartGame.hidden = false;
+const nameFirstPlayer = document.getElementById('input__name-first__player');
+const nameSecondPlayer = document.getElementById('input__name-second__player');
+//const listIconFirstPlayer = document.querySelectorAll('.icon__first__player')
+//const listIconSecondPlayer = document.querySelectorAll('.icon__second__player')
+const scoreFirstPlayer = document.getElementById('scoreFirstPlayer');
+const scoreSecondPlayer = document.getElementById('scoreSecondPlayer');
+//const blockIconFirstPlayer = document.querySelector('.infobar__first-player img');
+//const blockIconSecondPlayer = document.querySelector('.infobar__second-player img');
+const listCross = document.querySelector('.cross');
+const listMinus = document.querySelector('.minus');
+const lastScore = document.querySelector('#input__last__score');
 var coutingScoreFirstPlayer = 0;
 var coutingScoreSecondPlayer = 0;
+var endScore;
+const winPlayer = document.querySelector('.win__player');
 
 // Перебор списка с квадратами (item - квадрат, по которому нажали)
 squery.forEach(function (item) {
@@ -28,9 +42,9 @@ squery.forEach(function (item) {
 			draw = checkDraw(); // Проверка на ничью
 			// Если победил первый игрок
 			if (win) {
-				modalWindow('First');
 				coutingScoreFirstPlayer++;
 				scoreFirstPlayer.innerHTML = coutingScoreFirstPlayer;
+				modalWindow(nameFirstPlayer);
 			}
 			//Если ничья
 			else if (draw) {
@@ -52,9 +66,9 @@ squery.forEach(function (item) {
 			draw = checkDraw(); // Проверка на ничью
 			// Если победил первый игрок
 			if (win) {
-				modalWindow('Second');
 				coutingScoreSecondPlayer++;
 				scoreSecondPlayer.innerHTML = coutingScoreSecondPlayer;
+				modalWindow(nameSecondPlayer);
 			}
 			// Если ничья
 			else if (draw) {
@@ -63,6 +77,86 @@ squery.forEach(function (item) {
 		}
 	}, false);
 });
+
+// Функция для кнопки повтора.
+document.getElementById('reset').addEventListener('click', function () {
+	// Обнуление классов, которые были получены во время игры, у кнопок.
+	for (let i = 0; i < squery.length; i++) {
+		squery[i].classList.remove('cross');
+		squery[i].classList.remove('minus');
+		squery[i].classList.remove('pull');
+	}
+	win = false; // Обнуление победителя.
+	draw = false; // Обнуление ничьей.
+	windowEndGame.hidden = true; // Закрытие модального окна.
+	document.querySelector('.window-text > h2').remove(); // Обнуление текста в модальном окне.
+}, false);
+
+document.getElementById('launch').addEventListener('click', function () {
+	if (nameFirstPlayer.value === '' & nameSecondPlayer.value === '') {
+		document.querySelector('.infobar__first-player > h2').innerHTML = 'First player';
+		document.querySelector('.infobar__second-player > h2').innerHTML = 'Second player';
+	}
+	else if (nameFirstPlayer.value !== '' & nameSecondPlayer.value === '') {
+		document.querySelector('.infobar__first-player > h2').innerHTML = nameFirstPlayer.value;
+		document.querySelector('.infobar__second-player > h2').innerHTML = 'Second player';
+	}
+	else if (nameFirstPlayer.value === '' & nameSecondPlayer.value !== '') {
+		document.querySelector('.infobar__first-player > h2').innerHTML = 'First player';
+		document.querySelector('.infobar__second-player > h2').innerHTML = nameSecondPlayer.value;
+	}
+	else {
+		document.querySelector('.infobar__first-player > h2').innerHTML = nameFirstPlayer.value;
+		document.querySelector('.infobar__second-player > h2').innerHTML = nameSecondPlayer.value;
+	}
+	// if (listIconFirstPlayer[0].classList.contains('border')) {
+	// 	blockIconFirstPlayer.src = 'img/one-cross.png';
+	// }
+	// else if (listIconFirstPlayer[1].classList.contains('border')) {
+	// 	blockIconFirstPlayer.src = 'img/two-cross.png';
+	// }
+	// else if (listIconFirstPlayer[2].classList.contains('border')) {
+	// 	blockIconFirstPlayer.src = 'img/three-cross.png'
+	// }
+	// if (listIconSecondPlayer[0].classList.contains('border')) {
+	// 	blockIconSecondPlayer.src = 'img/one-krug.png';
+	// }
+	// else if (listIconSecondPlayer[1].classList.contains('border')) {
+	// 	blockIconSecondPlayer.src = 'img/two-krug.png';
+	// }
+	// else if (listIconSecondPlayer[2].classList.contains('border')) {
+	// 	blockIconSecondPlayer.src = 'img/three-krug.png';
+	// }
+	endScore = lastScore.value;
+	if (endScore === '') endScore = 9;
+	windowStartGame.hidden = true;
+	// Обнуление классов, которые были получены во время игры, у кнопок.
+	for (let i = 0; i < squery.length; i++) {
+		squery[i].classList.remove('cross');
+		squery[i].classList.remove('minus');
+		squery[i].classList.remove('pull');
+	}
+	win = false; // Обнуление победителя.
+	draw = false; // Обнуление ничьей.
+	coutingScoreFirstPlayer = 0;
+	coutingScoreSecondPlayer = 0;
+	scoreFirstPlayer.innerHTML = 0;
+	scoreSecondPlayer.innerHTML = 0;
+}, false);
+
+// listIconFirstPlayer.forEach(function (item) {
+// 	item.addEventListener('click', function () {
+// 		for (let i = 0; i < listIconFirstPlayer.length; i++) listIconFirstPlayer[i].classList.remove('border');
+// 		item.classList.add('border');
+// 	}, false);
+// });
+
+// listIconSecondPlayer.forEach(function (item) {
+// 	item.addEventListener('click', function () {
+// 		for (let i = 0; i < listIconSecondPlayer.length; i++) listIconSecondPlayer[i].classList.remove('border');
+// 		item.classList.add('border');
+// 	}, false);
+// });
 
 // Проверка на победу.
 // Функция работает по следующему образу:
@@ -141,23 +235,14 @@ function checkDraw() {
 
 // Функция вызова модального окна.
 function modalWindow(player) {
-	document.getElementById('hidden__window').hidden = false; // Включение модального окна.
-	// Вывод в модальном текста относительно отправленного в функцию текста (кто выиграл или ничья).
-	if (player === 'First') document.querySelector('.window-text').innerHTML += '<h2>First player win!</h2>'
-	else if (player === 'Second') document.querySelector('.window-text').innerHTML += '<h2>Second player win!</h2>'
-	else if (player === 'Drawn') document.querySelector('.window-text').innerHTML += '<h2>DRAWN!</h2>'
-}
-
-// Функция для кнопки повтора.
-document.getElementById('reset').addEventListener('click', function () {
-	// Обнуление классов, которые были получены во время игры, у кнопок.
-	for (let i = 0; i < squery.length; i++) {
-		squery[i].classList.remove('cross');
-		squery[i].classList.remove('minus');
-		squery[i].classList.remove('pull');
+	if (coutingScoreFirstPlayer === Number(endScore) || coutingScoreSecondPlayer === Number(endScore)) {
+		windowStartGame.hidden = false;
+		winPlayer.innerHTML = `${player.value} WIN`;
 	}
-	win = false; // Обнуление победителя.
-	draw = false; // Обнуление ничьей.
-	document.getElementById('hidden__window').hidden = true; // Закрытие модального окна.
-	document.querySelector('.window-text > h2').remove(); // Обнуление текста в модальном окне.
-}, false);
+	else {
+		windowEndGame.hidden = false; // Включение модального окна.
+		// Вывод в модальном текста относительно отправленного в функцию текста (кто выиграл или ничья).
+		if (player === 'Drawn') document.querySelector('.window-text').innerHTML += '<h2>DRAWN!</h2>';
+		else document.querySelector('.window-text').innerHTML += `<h2>${player.value} win</h2>`;
+	}
+}

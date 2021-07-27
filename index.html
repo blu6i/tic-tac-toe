@@ -14,14 +14,38 @@
 
 <body>
 	<div class="wrapper">
-		<div id="hidden__window">
-			<div id="modal__window">
-				<div class="window">
+		<div class="hidden__window">
+			<div class="modal__window">
+				<div class="window__end">
 					<div class="window-text">
 					</div>
 					<div class="window-button">
 						<button id="reset"></button>
 					</div>
+				</div>
+			</div>
+		</div>
+		<div class="hidden__window">
+			<div class="modal__window">
+				<div class="window__options">
+					<div class="win__player two-line text"></div>
+					<div class="input__name-text two-line text">Enter name players</div>
+					<input type="text" id="input__name-first__player" placeholder="Enter the first player">
+					<input type="text" id="input__name-second__player" placeholder="Enter the second player">
+					<!-- <div class="choice__icon-text two-line text">Select the players icon</div>
+					<div class="choice__icon-first__player conteiner-img">
+						<img src="img/one-cross.png" alt="" class="choice__icon-first__player__item-1 icon__first__player">
+						<img src="img/two-cross.png" alt="" class="choice__icon-first__player__item-2 icon__first__player">
+						<img src="img/three-cross.png" alt="" class="choice__icon-first__player__item-3 icon__first__player">
+					</div>
+					<div class="choice__icon-second__player conteiner-img">
+						<img src="img/one-krug.png" alt="" class="choice__icon-second__player__item-1 icon__second__player">
+						<img src="img/two-krug.png" alt="" class="choice__icon-second__player__item-2 icon__second__player">
+						<img src="img/three-krug.png" alt="" class="choice__icon-second__player__item-3 icon__second__player">
+					</div> -->
+					<div class="input__score two-line text">Enter the final invoice (max 99)</div>
+					<input type="text" id="input__last__score" class="two-line" placeholder="Enter the final invoice">
+					<button id="launch" class="two-line text">play</button>
 				</div>
 			</div>
 		</div>
@@ -40,14 +64,13 @@
 			<aside>
 				<div class="infobar">
 					<div class="infobar__first-player grid-item">
-						<h2>First player</h2>
-						<img src="img/10-103856_red-cross-mark-png-transparent-images-x-marks.png" alt="logo first player">
+						<h2></h2>
+						<img src="img/one-cross.png" alt="logo first player">
 						<div class="score" id="scoreFirstPlayer">0</div>
 					</div>
 					<div class="infobar__second-player grid-item">
-						<h2>Second player</h2>
-						<img src="img/0_krug-png_-2-tys-izobrazhenij-najdeno-v-YAndeks.Kartinkah.png"
-							alt="logo second player">
+						<h2></h2>
+						<img src="img/one-krug.png" alt="logo second player">
 						<div class="score" id="scoreSecondPlayer">0</div>
 					</div>
 				</div>

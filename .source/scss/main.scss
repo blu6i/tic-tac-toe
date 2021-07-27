@@ -5,8 +5,8 @@
 .wrapper {
 	height: 100vh;
 	background: lightblue;
-	#hidden__window {
-		#modal__window {
+	.hidden__window {
+		.modal__window {
 			position: absolute;
 			height: 100vh;
 			width: 100%;
@@ -15,7 +15,7 @@
 			grid-template: 1fr / 1fr;
 			align-items: center;
 			justify-items: center;
-			.window {
+			.window__end {
 				background-color: lightgrey;
 				padding: 20px 15px 5px;
 				display: grid;
@@ -34,6 +34,43 @@
 						height: 50px;
 						width: 50px;
 					}
+				}
+			}
+			.window__options {
+				background-color: aquamarine;
+				padding: 20px 10px 10px;
+				display: grid;
+				grid-template-rows: 50px 100px 50px 100px 50px 100px 75px / 200px 200px;
+				grid-gap: 20px;
+				border: 5px solid aqua;
+				.two-line {
+					grid-column: 1 / 3;
+					justify-self: center;
+				}
+				.text {
+					text-transform: uppercase;
+				}
+				input {
+					padding: 10px 20px;
+					border: 1px solid black;
+				}
+				// .conteiner-img {
+				// 	display: grid;
+				// 	grid-template: auto / repeat(3, 50px);
+				// 	justify-content: space-around;
+				// 	img {
+				// 		padding: 2.5px;
+				// 		width: 50px;
+				// 		height: 50px;
+				// 	}
+				// 	.border {
+				// 		outline: 2px solid brown;
+				// 	}
+				// }
+				button {
+					padding: 10px 20px;
+					cursor: pointer;
+					border: 1px solid black;
 				}
 			}
 		}
@@ -66,13 +103,13 @@
 				border-left: none;
 			}
 			.cross {
-				background-image: url("../img/10-103856_red-cross-mark-png-transparent-images-x-marks.png");
+				background-image: url("../img/one-cross.png");
 				background-repeat: no-repeat;
 				background-size: 90%;
 				background-position: center;
 			}
 			.minus {
-				background-image: url("../img/0_krug-png_-2-tys-izobrazhenij-najdeno-v-YAndeks.Kartinkah.png");
+				background-image: url("../img/one-krug.png");
 				background-repeat: no-repeat;
 				background-size: 90%;
 				background-position: center;
