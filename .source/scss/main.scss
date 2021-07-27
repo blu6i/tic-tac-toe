@@ -132,19 +132,28 @@
 				grid-template: 1fr / repeat(2, 50%);
 				.grid-item {
 					display: grid;
-					grid-template: 100px 75px 200px / 1fr;
+					grid-template: 50px 100px 75px 200px / 1fr;
 					justify-items: center;
+					.going__first__player,
+					.going__second__player {
+						height: 50px;
+						width: 5px;
+						background-color: darkcyan;
+					}
 					h2 {
 						align-self: end;
+						grid-row: 2 /3;
 					}
 					img {
 						height: 50px;
 						width: 50px;
 						align-self: center;
+						grid-row: 3/4;
 					}
 					.score {
 						align-self: center;
 						font-size: 128px;
+						grid-row: 4/5;
 					}
 				}
 				.infobar__first-player {

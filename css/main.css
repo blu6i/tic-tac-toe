@@ -182,16 +182,26 @@
 .wrapper main aside .infobar .grid-item {
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 100px 75px 200px;
+  -ms-grid-rows: 50px 100px 75px 200px;
   -ms-grid-columns: 1fr;
-      grid-template: 100px 75px 200px / 1fr;
+      grid-template: 50px 100px 75px 200px / 1fr;
   justify-items: center;
+}
+
+.wrapper main aside .infobar .grid-item .going__first__player,
+.wrapper main aside .infobar .grid-item .going__second__player {
+  height: 50px;
+  width: 5px;
+  background-color: darkcyan;
 }
 
 .wrapper main aside .infobar .grid-item h2 {
   -ms-flex-item-align: end;
       -ms-grid-row-align: end;
       align-self: end;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2 /3;
 }
 
 .wrapper main aside .infobar .grid-item img {
@@ -200,6 +210,9 @@
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 1;
+  grid-row: 3/4;
 }
 
 .wrapper main aside .infobar .grid-item .score {
@@ -207,6 +220,9 @@
       -ms-grid-row-align: center;
       align-self: center;
   font-size: 128px;
+  -ms-grid-row: 4;
+  -ms-grid-row-span: 1;
+  grid-row: 4/5;
 }
 
 .wrapper main aside .infobar .infobar__first-player {

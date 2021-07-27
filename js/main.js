@@ -1,7 +1,11 @@
 'use strict';
 const squery = document.querySelectorAll('.field-item'); // Список с квадратами
 var firstPlayer = true; // Первый игрок
+const goingFirstPlayer = document.querySelector('.going__first__player');
+goingFirstPlayer.hidden = false;
 var secondPlayer = false; // Второй игрок
+const goingSecondPlayer = document.querySelector('.going__second__player');
+goingSecondPlayer.hidden = true;
 var win = false; // Переменная для определения победителя
 var draw = false; // Переменная для определения ничьей
 const windowList = document.querySelectorAll('.hidden__window');
@@ -36,7 +40,9 @@ squery.forEach(function (item) {
 			item.classList.add('pull'); // Присваивание квадрату класса, по которому определяется, был ли нажат квадрат
 			// Перераспределение ходов игроков
 			firstPlayer = false;
+			goingFirstPlayer.hidden = true;
 			secondPlayer = true;
+			goingSecondPlayer.hidden = false;
 
 			win = checkFirstPlayerWin(); // Проверка на победу первого игрока
 			draw = checkDraw(); // Проверка на ничью
@@ -60,7 +66,9 @@ squery.forEach(function (item) {
 
 			// Перераспределение ходов игроков
 			firstPlayer = true;
+			goingFirstPlayer.hidden = false;
 			secondPlayer = false;
+			goingSecondPlayer.hidden = true;
 
 			win = checkSecondPlayerWin(); // Проверка на победу второго игрока
 			draw = checkDraw(); // Проверка на ничью
